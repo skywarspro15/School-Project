@@ -195,14 +195,6 @@ input {
 }
 
 @media only screen and (max-width: 600px) {
-  ul.navbar li.nav-item.right {
-    float: left;
-    text-align: center;
-    padding: 10px;
-    vertical-align: middle;
-    line-height: normal;
-  }
-
   .modal-content {
     background: rgba(0, 0, 0, 0.85);
     animation: slideDown 500ms;
@@ -211,6 +203,14 @@ input {
     border: 1px rgb(25, 25, 25) solid;
     width: 95%;
     height: 420vh;
+  }
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
   }
 }
 

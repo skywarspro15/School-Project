@@ -214,6 +214,86 @@ input {
   }
 }
 
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  transition: all 500ms;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+  transition: all 500ms;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+    transition: all 500ms;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+    transition: all 500ms;
+  }
+}
+
+ul.cards {
+  justify-content: center;
+  transition: all 500ms;
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all 500ms;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.card_content {
+  padding: 1rem;
+  background: rgba(30, 30, 30, 0.95);
+  transition: all 500ms;
+}
+
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-family: SegoeUIVariableSemibold;
+  text-transform: capitalize;
+  margin: 0px;
+  transition: all 500ms;
+}
+
+.card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+  transition: all 500ms;
+}
+
 @keyframes slideDown {
   0% {
     transform: translateY(-250px);

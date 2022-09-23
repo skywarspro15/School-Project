@@ -224,21 +224,21 @@ img {
   transition: all 500ms;
 }
 
-.cards_item {
+.cards-item {
   display: flex;
   padding: 1rem;
   transition: all 500ms;
 }
 
 @media (min-width: 40rem) {
-  .cards_item {
+  .cards-item {
     width: 50%;
     transition: all 500ms;
   }
 }
 
 @media (min-width: 56rem) {
-  .cards_item {
+  .cards-item {
     width: 33.3333%;
     transition: all 500ms;
   }
@@ -264,13 +264,13 @@ ul.cards {
   cursor: pointer;
 }
 
-.card_content {
+.card-content {
   padding: 1rem;
   background: rgba(30, 30, 30, 0.8);
   transition: all 500ms;
 }
 
-.card_title {
+.card-title {
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 700;
@@ -281,7 +281,7 @@ ul.cards {
   transition: all 500ms;
 }
 
-.card_text {
+.card-text {
   color: #ffffff;
   font-size: 0.875rem;
   line-height: 1.5;

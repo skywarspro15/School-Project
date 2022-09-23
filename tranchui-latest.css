@@ -300,6 +300,10 @@ ul.cards {
   transform: translateX(-15px);
 }
 
+.hidden {
+  opacity: 0;
+}
+
 @keyframes slideDown {
   0% {
     transform: translateY(-250px);

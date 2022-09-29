@@ -3,6 +3,11 @@ document.onscroll = function () {
 };
 var count = 0;
 var loadStatus = document.getElementById("loadStatus");
+var roller = document.getElementById("roller");
+
+var errorIcon = roller.getElementsByClassName("error");
+errorIcon[0].remove();
+
 async function modifyLoaderRoller(max) {
   if (count >= max) return;
   var roller = document.getElementById("roller");
@@ -47,6 +52,7 @@ async function load() {
   if (getCookie("visited") != "true") {
     await addUserCount();
   }
+  loadStatus.innerHTML = "Getting in...";
   setTimeout(function () {
     document.body.style.overflow = "scroll";
     var loader = document.getElementById("loader");

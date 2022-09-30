@@ -28,6 +28,7 @@ body {
   color-scheme: dark;
   font-family: SegoeUIVariable;
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -299,7 +300,7 @@ ul.cards {
   padding-bottom: 20px;
   background: rgba(30, 30, 30);
   width: 100%;
-  transform: translateX(-15px);
+  transform: translate(-15px, 10px);
 }
 
 .hidden {
@@ -403,8 +404,20 @@ ul.cards {
   justify-content: center;
   align-items: center;
   background: rgb(25, 25, 25);
-  z-index: 1000;
+  z-index: 2000;
   transition: all 500ms;
+}
+
+.fullscreen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1000%;
+  width: 100%;
+  z-index: 1000;
+  background-color: rgb(25, 25, 25);
+  transition: all 500ms;
+  animation: fadeIn 500ms;
 }
 
 @keyframes lds-roller {

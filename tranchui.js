@@ -45,9 +45,9 @@ const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 };
 
-function appearCards(id) {
-  var cards = document.getElementById(id);
-  if (elementIsVisibleInViewport(cards, true)) {
-    cards.classList.remove("hidden");
+function appearElement(id) {
+  var element = document.getElementById(id);
+  if (elementIsVisibleInViewport(element, true)) {
+    element.classList.remove("hidden");
   }
 }

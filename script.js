@@ -5,7 +5,8 @@ if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
 }
 
 document.onscroll = function () {
-  appearCards("storyboard");
+  appearElement("storyboard");
+  appearElement("menu-list");
 };
 
 // Remove JavaScript error notice and replace with loading screen
@@ -13,6 +14,7 @@ var count = 0;
 var loadStatus = document.getElementById("loadStatus");
 var roller = document.getElementById("roller");
 var errorIcon = roller.getElementsByClassName("error");
+var full = location.protocol + "//" + location.host;
 errorIcon[0].remove();
 
 async function modifyLoaderRoller(max) {
@@ -30,9 +32,27 @@ setInterval(function () {
   modifyLoaderRoller(6);
 }, 200);
 
+// Submit feedback
+async function submitFeedback() {
+  var feedbackInput = document.getElementById("feedbackText");
+  var submitFeedback = document.getElementById("feedbackSubmit");
+
+  submitFeedback.innerHTML = "Submitting...";
+  await makeRequest(
+    "GET",
+    "https://LifeLabsProjectAnalytics.skywarspro15.repl.co/addFeedback.php?content=" +
+      feedbackInput.value
+  );
+  closeModal("feedback.html");
+  setTimeout(function () {
+    document.getElementById("feedback.html").remove();
+  }, 500);
+  loadPage("feedbackSuccess.html");
+}
+
 // Send a request to increment user count (For analytics purposes)
 async function addUserCount() {
-  loadStatus.innerHTML = "Logging user count...";
+  loadStatus.innerHTML = "Incrementing user count...";
   var result = await makeRequest(
     "GET",
     "https://lifelabsprojectanalytics.skywarspro15.repl.co/addUserCount.php"
@@ -47,15 +67,39 @@ async function load() {
     await addUserCount();
     setTimeout(function () {
       openModal("welcomeModal");
-    }, 2100);
+    }, 100);
   }
   loadStatus.innerHTML = "Getting in...";
-  setTimeout(function () {
-    document.body.style.overflow = "scroll";
-    var loader = document.getElementById("loader");
-    loader.classList.add("hidden");
-    loader.style.zIndex = "-100";
-  }, 2000);
+  document.body.style.overflow = "scroll";
+  var loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+  loader.style.zIndex = "-100";
+}
+
+//Load external HTML
+async function loadPage(page) {
+  var modalDiv = document.createElement("div");
+  var modalContent = document.createElement("div");
+  var closeIcon = document.createElement("span");
+  var html = await makeRequest("GET", full + "/" + page);
+  document.body.style.overflow = "hidden";
+  modalDiv.id = page;
+  modalDiv.className = "modal active";
+  modalContent.className = "modal-content";
+  closeIcon.className = "close";
+  closeIcon.innerHTML = "&times;";
+  closeIcon.style.margin = "10px";
+  closeIcon.addEventListener("click", function () {
+    closeModal(modalDiv.id);
+    setTimeout(function () {
+      modalDiv.remove();
+    }, 500);
+  });
+
+  modalContent.appendChild(closeIcon);
+  modalContent.insertAdjacentHTML("beforeend", html);
+  modalDiv.appendChild(modalContent);
+  document.body.appendChild(modalDiv);
 }
 
 // XHR functionality

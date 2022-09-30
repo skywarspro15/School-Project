@@ -1,0 +1,92 @@
+.menu {
+  transition: all 500ms;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20%;
+}
+
+.menu-list {
+  transition: all 500ms;
+  transition-delay: 200ms;
+  list-style-type: none;
+  font-size: 250%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.menu-list li a {
+  font-size: 8vh;
+  color: gray;
+  transition: all 200ms;
+}
+
+.menu-list {
+  transition: all 500ms;
+  transition-delay: 200ms;
+  list-style-type: none;
+  font-size: 25vh;
+}
+
+.menu-list li.right a {
+  transition: all 500ms;
+  font-size: 50;
+  color: gray;
+  transition: all 200ms;
+  text-align: right;
+  margin-right: 10vh;
+}
+
+.menu-list li a:hover {
+  font-size: 8vh;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-list li a:active {
+  font-size: 8vh;
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
+    0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+}
+
+.menu-list li.right a:hover {
+  font-size: 8vh;
+  color: white;
+  cursor: pointer;
+}
+
+.menu-list li.right a:active {
+  font-size: 8vh;
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
+    0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#menu-list.hidden {
+  transform: translateY(250px);
+}
+
+@media screen and (max-width: 950px) {
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .menu {
+    display: inline-block;
+  }
+  .menu-list li.right a {
+    color: gray;
+    transition: all 200ms;
+    text-align: left;
+  }
+}

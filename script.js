@@ -1,10 +1,17 @@
+// Force window scroll to top
+if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+
 document.onscroll = function () {
   appearCards("storyboard");
 };
+
+// Remove JavaScript error notice and replace with loading screen
 var count = 0;
 var loadStatus = document.getElementById("loadStatus");
 var roller = document.getElementById("roller");
-
 var errorIcon = roller.getElementsByClassName("error");
 errorIcon[0].remove();
 
@@ -18,26 +25,12 @@ async function modifyLoaderRoller(max) {
 }
 
 document.body.style.overflow = "hidden";
-window.onbeforeunload = function () {
-  removeUserCount();
-  console.log("Quitting...");
-};
 
 setInterval(function () {
   modifyLoaderRoller(6);
 }, 200);
 
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? "pm" : "am";
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? "0" + minutes : minutes;
-  var strTime = hours + ":" + minutes + " " + ampm;
-  return strTime;
-}
-
+// Send a request to increment user count (For analytics purposes)
 async function addUserCount() {
   loadStatus.innerHTML = "Logging user count...";
   var result = await makeRequest(
@@ -48,9 +41,13 @@ async function addUserCount() {
   return result;
 }
 
+// Load site
 async function load() {
   if (getCookie("visited") != "true") {
     await addUserCount();
+    setTimeout(function () {
+      openModal("welcomeModal");
+    }, 2100);
   }
   loadStatus.innerHTML = "Getting in...";
   setTimeout(function () {
@@ -61,6 +58,7 @@ async function load() {
   }, 2000);
 }
 
+// XHR functionality
 function makeRequest(method, url) {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest();
@@ -85,6 +83,7 @@ function makeRequest(method, url) {
   });
 }
 
+// Cookie data
 function setCookie(cname, cvalue) {
   const today = new Date();
   const d = new Date();

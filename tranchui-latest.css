@@ -194,6 +194,9 @@ input {
   font-family: SegoeUIVariable;
 }
 
+#showMore {
+  display: none;
+}
 @media only screen and (max-width: 600px) {
   .modal-content {
     position: fixed;
@@ -220,8 +223,13 @@ input {
 
   ul.navbar {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  #showMore {
+    display: block;
   }
 }
 

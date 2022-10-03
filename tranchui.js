@@ -51,3 +51,25 @@ function appearElement(id) {
     element.classList.remove("hidden");
   }
 }
+
+function navItemShow(id) {
+  var button = document.getElementById(id);
+  button.innerHTML = "Show less";
+  button.href = "javascript: navItemHide('" + id + "');";
+  var elements = document.querySelectorAll(".responsive");
+  for (var i = 0, len = elements.length; i < len; i++) {
+    elements[i].classList.remove("responsive");
+    elements[i].classList.add("responsive-active");
+  }
+}
+
+function navItemHide(id) {
+  var button = document.getElementById(id);
+  button.innerHTML = "Show more";
+  button.href = "javascript: navItemShow('" + id + "');";
+  var elements = document.querySelectorAll(".responsive-active");
+  for (var i = 0, len = elements.length; i < len; i++) {
+    elements[i].classList.remove("responsive-active");
+    elements[i].classList.add("responsive");
+  }
+}

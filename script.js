@@ -1,9 +1,4 @@
-// Force window scroll to top
-if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
-}
-
+//Scrolling animation
 document.onscroll = function () {
   appearElement("storyboard");
   appearElement("menu-list");

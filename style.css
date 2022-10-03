@@ -71,6 +71,26 @@
   transform: translateY(250px);
 }
 
+#title {
+  color: #43cea2; /* fallback for old browsers */
+  color: -webkit-linear-gradient(
+    to right,
+    #185a9d,
+    #43cea2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  color: linear-gradient(
+    to right,
+    #185a9d,
+    #43cea2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  transition: all 500ms;
+}
+
+#title:hover {
+  color: white;
+}
+
 @media screen and (max-width: 950px) {
   .menu {
     display: flex;

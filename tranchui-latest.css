@@ -240,7 +240,7 @@ img {
 
 @media (min-width: 56rem) {
   .cards-item {
-    width: 33.3333%;
+    width: 25%;
     transition: all 500ms;
   }
 }

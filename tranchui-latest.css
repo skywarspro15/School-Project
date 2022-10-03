@@ -63,6 +63,7 @@ ul.navbar {
   position: fixed;
   top: 0;
   width: 100%;
+  transition: all 500ms;
 }
 
 ul.navbar li.nav-item.left {
@@ -71,6 +72,7 @@ ul.navbar li.nav-item.left {
   padding: 10px;
   vertical-align: middle;
   line-height: normal;
+  transition: all 500ms;
 }
 
 ul.navbar li.nav-item.right {
@@ -79,6 +81,7 @@ ul.navbar li.nav-item.right {
   padding: 10px;
   vertical-align: middle;
   line-height: normal;
+  transition: all 500ms;
 }
 
 a {
@@ -87,6 +90,7 @@ a {
   font-size: 15px;
   vertical-align: middle;
   line-height: normal;
+  transition: all 500ms;
 }
 
 .button {
@@ -192,6 +196,7 @@ input {
 
 @media only screen and (max-width: 600px) {
   .modal-content {
+    position: fixed;
     background: rgba(0, 0, 0, 0.85);
     animation: slideDown 500ms;
     margin: 0 auto;
@@ -207,6 +212,16 @@ input {
     font-weight: bold;
     cursor: pointer;
     margin-right: 10px;
+  }
+
+  .responsive {
+    display: none;
+  }
+
+  ul.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 

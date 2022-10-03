@@ -23,18 +23,20 @@
   <body>
     <div class="navContainer">
       <ul class="navbar">
-        <li class="nav-item left">
+        <li class="nav-item left" id="title">
           <a href="index.html" class="semibold" id="title"
             >The LifeLabs project</a
           >
         </li>
-        <li class="nav-item left">
+        <li class="nav-item left responsive">
           <a href="javascript: openModal('aboutModal');">About</a>
         </li>
-        <li class="nav-item left">
+        <li class="nav-item left responsive">
           <a href="mailto:tranchsoftware@gmail.com">Contact</a>
         </li>
-        <li class="nav-item right"><a class="button">Watch teaser</a></li>
+        <li class="nav-item right responsive">
+          <a class="button">Watch teaser</a>
+        </li>
       </ul>
     </div>
     <div class="loadScreen" id="loader">
@@ -46,22 +48,49 @@
         />
       </div>
       <br />
-      <p id="loadStatus" class="subtitle" style="text-align: center">
+      <p
+        id="loadStatus"
+        class="subtitle"
+        style="
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
         JavaScript must be enabled to load this page.
       </p>
     </div>
     <div class="vcenter">
-      <p id="releasingIN" class="title" style="text-align: center"></p>
-      <p class="subtitle" style="text-align: center">
+      <p
+        id="releasingIN"
+        class="title"
+        style="
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      ></p>
+      <p
+        class="subtitle"
+        style="
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        "
+      >
         Coming soon, this October 10th, only on Broadcast.
       </p>
       <div
         class="buttons"
         style="
           margin-top: 10px;
-          left: 50%;
-          transform: translateX(-50%);
-          position: absolute;
+          text-align: center;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         "
       >
         <button class="button" onclick="" style="margin-left: 10px">
@@ -230,7 +259,7 @@
           Watch this video if you'd like to learn more about our project:
         </p>
         <br />
-        <video width="640" height="360"></video> <br />
+        <video width="640" height="360" style="max-width: 20%"></video> <br />
         <p class="subtitle">Hope you enjoy your stay!</p>
       </div>
     </div>

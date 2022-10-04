@@ -2,6 +2,7 @@
 document.onscroll = function () {
   appearElement("storyboard");
   appearElement("menu-list");
+  appearElement("stats");
 };
 
 // Remove JavaScript error notice and replace with loading screen
@@ -56,6 +57,7 @@ async function addUserCount() {
   return result;
 }
 
+// Get user count
 async function getUserCount() {
   loadStatus.innerHTML = "Getting user count...";
   var result = await makeRequest(
@@ -76,6 +78,15 @@ async function load() {
     }, 100);
   }
   await getUserCount();
+  loadStatus.innerHTML = "Getting in...";
+  document.body.style.overflow = "scroll";
+  var loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+  loader.style.zIndex = "-100";
+}
+
+// Hide the loading indicator when there's connectivity issues
+function hideLoader() {
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
   var loader = document.getElementById("loader");

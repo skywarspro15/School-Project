@@ -1,9 +1,8 @@
 .menu {
   transition: all 500ms;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20%;
+  flex-direction: row;
+  gap: 30vw;
 }
 
 .menu-list {
@@ -19,6 +18,7 @@
   font-size: 8vh;
   color: gray;
   transition: all 200ms;
+  text-align: left;
 }
 
 .menu-list {
@@ -35,29 +35,26 @@
   transition: all 200ms;
   text-align: right;
   margin-right: 8vh;
+  font-size: 8vh;
 }
 
 .menu-list li a:hover {
-  font-size: 8vh;
   color: white;
   cursor: pointer;
 }
 
 .menu-list li a:active {
-  font-size: 8vh;
   color: white;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
     0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
 }
 
 .menu-list li.right a:hover {
-  font-size: 8vh;
   color: white;
   cursor: pointer;
 }
 
 .menu-list li.right a:active {
-  font-size: 8vh;
   color: white;
   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
     0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
@@ -69,6 +66,24 @@
 
 #menu-list.hidden {
   transform: translateY(250px);
+}
+
+ul.statList {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 30vw;
+  margin: 0;
+  padding: 0;
+}
+
+ul.statList li {
+  text-align: center;
+}
+
+ul.statList li p.title {
+  font-size: 5em;
 }
 
 #title {
@@ -91,16 +106,7 @@
   color: white;
 }
 
-@media screen and (max-width: 950px) {
-  .menu {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20%;
-  }
-}
-
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 600px) {
   .menu {
     display: inline-block;
   }
@@ -108,5 +114,21 @@
     color: gray;
     transition: all 200ms;
     text-align: left;
+    font-size: 5vh;
+  }
+  .menu-list li a {
+    color: gray;
+    transition: all 200ms;
+    text-align: left;
+    font-size: 5vh;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .menu-list li.right a {
+    font-size: 6vh;
+  }
+  .menu-list li a {
+    font-size: 6vh;
   }
 }

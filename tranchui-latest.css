@@ -125,7 +125,11 @@ button.button:hover {
   position: absolute;
   top: 50%;
   margin-top: -5%;
-  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
   animation: slideLeft 500ms;
 }
 
@@ -318,11 +322,10 @@ ul.cards {
 
 .footer {
   margin-top: 10vh;
-  padding-right: 15px;
   padding-top: 20px;
   padding-bottom: 20px;
   width: 100%;
-  transform: translate(-15px, 10px);
+  text-align: center;
 }
 
 .hidden {

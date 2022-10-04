@@ -56,6 +56,17 @@ async function addUserCount() {
   return result;
 }
 
+async function getUserCount() {
+  loadStatus.innerHTML = "Getting user count...";
+  var result = await makeRequest(
+    "GET",
+    "https://lifelabsprojectanalytics.skywarspro15.repl.co/getUserCount.php"
+  );
+  var totalCount = document.getElementById("totalUsers");
+  totalCount.innerHTML = result;
+  return result;
+}
+
 // Load site
 async function load() {
   if (getCookie("visited") != "true") {
@@ -64,6 +75,7 @@ async function load() {
       openModal("welcomeModal");
     }, 100);
   }
+  await getUserCount();
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
   var loader = document.getElementById("loader");

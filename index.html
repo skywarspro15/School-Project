@@ -56,39 +56,13 @@
         />
       </div>
       <br />
-      <p
-        id="loadStatus"
-        class="subtitle"
-        style="
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        "
-      >
+      <p id="loadStatus" class="subtitle" style="text-align: center">
         JavaScript must be enabled to load this page.
       </p>
     </div>
     <div class="vcenter">
-      <p
-        id="releasingIN"
-        class="title"
-        style="
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        "
-      ></p>
-      <p
-        class="subtitle"
-        style="
-          text-align: center;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        "
-      >
+      <p id="releasingIN" class="title" style="text-align: center"></p>
+      <p class="subtitle" style="text-align: center">
         Coming soon, this October 10th, only on Broadcast.
       </p>
       <div
@@ -101,10 +75,30 @@
           align-items: center;
         "
       >
-        <button class="button" onclick="" style="margin-left: 10px">
+        <button
+          class="button"
+          onclick=""
+          style="margin-left: 10px; text-align: center"
+        >
           Watch teaser
         </button>
       </div>
+      <p
+        class="title"
+        style="margin-top: 30%; margin-bottom: 8vh; text-align: center"
+      >
+        Current Stats
+      </p>
+      <ul class="statList" id="stats">
+        <li>
+          <p class="title" id="onlineUsers">...</p>
+          <p class="subtitle">Online users</p>
+        </li>
+        <li>
+          <p class="title" id="totalUsers">...</p>
+          <p class="subtitle">Total users</p>
+        </li>
+      </ul>
       <p
         class="title"
         style="margin-top: 30%; margin-bottom: 8vh; text-align: center"
@@ -308,4 +302,5 @@
   ></script>
   <script src="tranchui.js"></script>
   <script src="script.js"></script>
+  <script src="socket.js" type="module"></script>
 </html>

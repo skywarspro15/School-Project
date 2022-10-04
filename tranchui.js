@@ -54,8 +54,9 @@ function appearElement(id) {
 
 function navItemShow(id) {
   var button = document.getElementById(id);
-  button.innerHTML = "Show less";
+  var icon = button.getElementsByClassName("iconImg");
   button.href = "javascript: navItemHide('" + id + "');";
+  icon[0].src = "icons/up-arrow.png";
   var elements = document.querySelectorAll(".responsive");
   for (var i = 0, len = elements.length; i < len; i++) {
     elements[i].classList.remove("responsive");
@@ -65,8 +66,9 @@ function navItemShow(id) {
 
 function navItemHide(id) {
   var button = document.getElementById(id);
-  button.innerHTML = "Show more";
+  var icon = button.getElementsByClassName("iconImg");
   button.href = "javascript: navItemShow('" + id + "');";
+  icon[0].src = "icons/down-arrow.png";
   var elements = document.querySelectorAll(".responsive-active");
   for (var i = 0, len = elements.length; i < len; i++) {
     elements[i].classList.remove("responsive-active");

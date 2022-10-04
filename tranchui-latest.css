@@ -443,6 +443,15 @@ ul.cards {
   animation: fadeIn 500ms;
 }
 
+.icon {
+  text-align: center;
+}
+
+.iconImg {
+  width: 20%;
+  height: 20%;
+}
+
 @keyframes lds-roller {
   0% {
     transform: rotate(0deg);

@@ -434,7 +434,7 @@ ul.cards {
   justify-content: center;
   align-items: center;
   background: rgb(25, 25, 25);
-  z-index: 2000;
+  z-index: 100002;
   transition: all 500ms;
 }
 
@@ -444,7 +444,7 @@ ul.cards {
   left: 0;
   height: 1000%;
   width: 100%;
-  z-index: 1000;
+  z-index: 100002;
   background-color: rgb(25, 25, 25);
   transition: all 500ms;
   animation: fadeIn 500ms;

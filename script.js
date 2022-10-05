@@ -65,7 +65,13 @@ async function getUserCount() {
     "https://lifelabsprojectanalytics.skywarspro15.repl.co/getUserCount.php"
   );
   var totalCount = document.getElementById("totalUsers");
-  totalCount.innerHTML = result;
+  totalCount.style.animation = "countingUp 0.5s ease";
+  setTimeout(function () {
+    totalCount.innerHTML = result;
+  }, 200);
+  setTimeout(function () {
+    totalCount.style.animation = "";
+  }, 500);
   return result;
 }
 

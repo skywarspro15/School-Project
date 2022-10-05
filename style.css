@@ -132,3 +132,47 @@ ul.statList li p.title {
     font-size: 6vh;
   }
 }
+@keyframes countingUp {
+  50% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes countingDown {
+  50% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes countingDown {
+  50% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

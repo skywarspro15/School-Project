@@ -8,6 +8,7 @@ socket.on("connect", () => {
   socket.emit("ONLINEUSERS");
 });
 
+// Update user stats
 socket.on("USERCOUNT", (arg) => {
   var count = parseInt(arg);
   if (count > lastCount) {
@@ -32,10 +33,12 @@ socket.on("USERCOUNT", (arg) => {
   lastCount = count;
 });
 
+// Receive announcements
 socket.on("ANNOUNCEMENT", (arg) => {
   createNotification("Announcement", arg, "images/logo.png");
 });
 
+// Create notification
 function createNotification(title, body, icon) {
   (async () => {
     const showNotification = () => {
@@ -64,7 +67,6 @@ function createNotification(title, body, icon) {
       granted = permission === "granted" ? true : false;
     }
 
-    // show notification or error
     granted ? showNotification() : showError();
   })();
 }

@@ -31,3 +31,40 @@ socket.on("USERCOUNT", (arg) => {
   }
   lastCount = count;
 });
+
+socket.on("ANNOUNCEMENT", (arg) => {
+  createNotification("Announcement", arg, "images/logo.png");
+});
+
+function createNotification(title, body, icon) {
+  (async () => {
+    const showNotification = () => {
+      const notification = new Notification(title, {
+        body: body,
+        icon: icon,
+      });
+
+      setTimeout(() => {
+        notification.close();
+      }, 10 * 1000);
+
+      notification.addEventListener("click", () => {
+        window.focus();
+        document.getElementById("announcementContent").innerHTML = body;
+        openModal("announcementModal");
+      });
+    };
+
+    let granted = false;
+
+    if (Notification.permission === "granted") {
+      granted = true;
+    } else if (Notification.permission !== "denied") {
+      let permission = await Notification.requestPermission();
+      granted = permission === "granted" ? true : false;
+    }
+
+    // show notification or error
+    granted ? showNotification() : showError();
+  })();
+}

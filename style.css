@@ -1,3 +1,7 @@
+.loadScreen {
+  cursor: url(icons/rickroll_128.png), auto;
+}
+
 .menu {
   transition: all 500ms;
   display: flex;

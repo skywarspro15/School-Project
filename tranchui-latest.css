@@ -446,7 +446,8 @@ ul.cards {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: rgb(25, 25, 25);
+  background-color: rgba(25, 25, 25, 0.5);
+  backdrop-filter: blur(100px);
   z-index: 100002;
   transition: all 500ms;
 }

@@ -4,7 +4,8 @@ body:hover > #trailer {
 
 #trailer {
   padding: 20px;
-  background-color: white;
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(20px);
   border-radius: 30px;
 
   position: fixed;
@@ -22,7 +23,7 @@ body:hover > #trailer {
 }
 
 #trailer-text {
-  color: black;
+  color: white;
   text-align: left;
   vertical-align: top;
   white-space: nowrap;

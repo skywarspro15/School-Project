@@ -1,5 +1,31 @@
-.loadScreen {
-  cursor: url(icons/rickroll_128.png), auto;
+body:hover > #trailer {
+  opacity: 0;
+}
+
+#trailer {
+  padding: 20px;
+  background-color: white;
+  border-radius: 30px;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 6942069;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+
+  display: grid;
+  place-items: center;
+  vertical-align: top;
+}
+
+#trailer-text {
+  color: black;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
 }
 
 .menu {

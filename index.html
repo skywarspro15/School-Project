@@ -21,6 +21,9 @@
     <title>LifeLabs Project</title>
   </head>
   <body>
+    <div id="trailer">
+      <p id="trailer-text"></p>
+    </div>
     <div class="navContainer">
       <ul class="navbar">
         <li class="nav-item left" id="title">
@@ -59,7 +62,12 @@
       <p id="loadStatus" class="subtitle" style="text-align: center">
         JavaScript must be enabled to load this page.
       </p>
-      <button class="button" onclick="hideLoader();" style="margin-top: 10px">
+      <button
+        class="button interactable"
+        onclick="hideLoader();"
+        style="margin-top: 10px"
+        data-type="Skip page load"
+      >
         Skip this page
       </button>
     </div>
@@ -247,22 +255,22 @@
       </ul>
       <div class="menu hidden" id="menu-list">
         <ul class="menu-list">
-          <li>
+          <li class="interactable" data-type="Give feedback on this project">
             <a class="title" href="javascript:loadPage('feedback.html');"
               >Give Feedback</a
             >
           </li>
-          <li>
+          <li class="interactable" data-type="Music used in the show">
             <a class="title" href="javascript:loadPage('soundtrack.html');"
               >Soundtrack</a
             >
           </li>
         </ul>
         <ul class="menu-list">
-          <li class="right">
+          <li class="right interactable" data-type="About the show">
             <a class="title" href="javascript:loadPage('about.html');">About</a>
           </li>
-          <li class="right">
+          <li class="right interactable" data-type="Pricing of the show">
             <a class="title" href="javascript:loadPage('pricing.html');"
               >Pricing</a
             >

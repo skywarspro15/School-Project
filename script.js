@@ -11,6 +11,7 @@ var loadStatus = document.getElementById("loadStatus");
 var roller = document.getElementById("roller");
 var errorIcon = roller.getElementsByClassName("error");
 var full = location.protocol + "//" + location.host;
+var isEnabled = false;
 errorIcon[0].remove();
 
 async function modifyLoaderRoller(max) {
@@ -89,6 +90,7 @@ async function load() {
   var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
+  isEnabled = true;
 }
 
 // Hide the loading indicator when there's connectivity issues
@@ -241,5 +243,57 @@ var x = setInterval(function () {
     document.getElementById("releasingIN").innerHTML = "Released";
   }
 }, 1000);
+
+// Custom cursor
+const trailer = document.getElementById("trailer");
+
+const animateTrailer = (e, interacting) => {
+  const x = e.clientX - trailer.offsetWidth / 2,
+    y = e.clientY - trailer.offsetHeight / 2;
+
+  const keyframes = {
+    transform: `translate(${x}px, ${y}px) scale(${interacting ? 2 : 1})`,
+  };
+
+  trailer.animate(keyframes, {
+    duration: 800,
+    fill: "forwards",
+  });
+};
+
+window.onmousemove = (e) => {
+  if (isEnabled == true) {
+    const interactable = e.target.closest(".interactable"),
+      interacting = interactable !== null;
+
+    const text = document.getElementById("trailer-text");
+
+    animateTrailer(e, interacting);
+
+    trailer.dataset.type = interacting ? interactable.dataset.type : "";
+
+    if (interacting) {
+      trailer.style.opacity = "1";
+      trailer.style.borderRadius = "5px";
+      trailer.style.width = "auto";
+      trailer.style.padding = "5px";
+      trailer.style.marginLeft = "10%";
+      text.style.fontSize = "5%";
+      text.innerText = interactable.dataset.type;
+    } else {
+      trailer.style.opacity = "0";
+      trailer.style.transition = "all 800ms";
+      trailer.style.borderRadius = "10px";
+      trailer.style.padding = "2px";
+      trailer.style.width = "none";
+      trailer.style.marginLeft = "0";
+      text.style.fontSize = "5%";
+      text.innerText = "";
+      setTimeout(function () {
+        trailer.style.transition = "none";
+      }, 800);
+    }
+  }
+};
 
 load();

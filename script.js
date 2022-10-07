@@ -190,7 +190,7 @@ function getCookie(cname) {
 }
 
 // Countdown timer
-var countDownDate = new Date("October 10, 2022 12:00:00").getTime();
+var countDownDate = new Date("October 14, 2022 12:00:00").getTime();
 
 var now = new Date().getTime();
 
@@ -281,8 +281,8 @@ window.onmousemove = (e) => {
       text.style.fontSize = "5%";
       text.innerText = interactable.dataset.type;
     } else {
-      trailer.style.opacity = "0";
       trailer.style.transition = "all 800ms";
+      trailer.style.opacity = "0";
       trailer.style.borderRadius = "10px";
       trailer.style.padding = "2px";
       trailer.style.width = "none";

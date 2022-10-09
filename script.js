@@ -82,15 +82,27 @@ async function load() {
     await addUserCount();
     setTimeout(function () {
       openModal("welcomeModal");
-    }, 100);
+    }, 2100);
   }
   await getUserCount();
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
   var loader = document.getElementById("loader");
+  var welcomeScreen = document.getElementById("welcomeScreen");
+  var welcomeTitle = document.getElementById("welcomeTitle");
+  var welcomeSubtitle = document.getElementById("welcomeSubtitle");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
-  isEnabled = true;
+  welcomeScreen.style.opacity = "1";
+  welcomeTitle.style.animation = "enterUp 500ms";
+  welcomeSubtitle.style.animation = "enterUp 500ms";
+  welcomeSubtitle.style.animationDelay = "50ms";
+  setTimeout(function () {
+    welcomeScreen.style.opacity = "0";
+    welcomeScreen.style.zIndex = "-1000";
+    isEnabled = true;
+    enableTooltips();
+  }, 2000);
 }
 
 // Hide the loading indicator when there's connectivity issues
@@ -261,47 +273,49 @@ const animateTrailer = (e, interacting) => {
   });
 };
 
-window.onmousemove = (e) => {
-  if (isEnabled == true) {
-    const interactable = e.target.closest(".interactable"),
-      interacting = interactable !== null;
+function enableTooltips() {
+  window.onmousemove = (e) => {
+    if (isEnabled == true) {
+      const interactable = e.target.closest(".interactable"),
+        interacting = interactable !== null;
 
-    const text = document.getElementById("trailer-text");
+      const text = document.getElementById("trailer-text");
 
-    animateTrailer(e, interacting);
+      animateTrailer(e, interacting);
 
-    trailer.dataset.type = interacting ? interactable.dataset.type : "";
+      trailer.dataset.type = interacting ? interactable.dataset.type : "";
 
-    if (interacting) {
-      trailer.style.opacity = "1";
-      trailer.style.borderRadius = "5px";
-      trailer.style.width = "auto";
-      trailer.style.padding = "5px";
-      trailer.style.marginLeft = "10%";
-      text.style.fontSize = "5%";
-      text.innerText = interactable.dataset.type;
-    } else {
-      trailer.style.transition = "all 800ms";
-      trailer.style.opacity = "0";
-      trailer.style.borderRadius = "10px";
-      trailer.style.padding = "2px";
-      trailer.style.width = "none";
-      trailer.style.marginLeft = "0";
-      text.style.fontSize = "5%";
-      text.innerText = "";
-      setTimeout(function () {
-        trailer.style.transition = "none";
-      }, 800);
+      if (interacting) {
+        trailer.style.opacity = "1";
+        trailer.style.borderRadius = "5px";
+        trailer.style.width = "auto";
+        trailer.style.padding = "5px";
+        trailer.style.marginLeft = "10%";
+        text.style.fontSize = "5%";
+        text.innerText = interactable.dataset.type;
+      } else {
+        trailer.style.transition = "all 800ms";
+        trailer.style.opacity = "0";
+        trailer.style.borderRadius = "10px";
+        trailer.style.padding = "2px";
+        trailer.style.width = "none";
+        trailer.style.marginLeft = "0";
+        text.style.fontSize = "5%";
+        text.innerText = "";
+        setTimeout(function () {
+          trailer.style.transition = "none";
+        }, 800);
+      }
     }
-  }
-};
+  };
 
-window.onresize = () => {
-  if (window.innerWidth < 600) {
-    isEnabled = false;
-  } else {
-    isEnabled = true;
-  }
-};
+  window.onresize = () => {
+    if (window.innerWidth < 600) {
+      isEnabled = false;
+    } else {
+      isEnabled = true;
+    }
+  };
+}
 
 load();

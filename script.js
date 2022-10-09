@@ -296,4 +296,12 @@ window.onmousemove = (e) => {
   }
 };
 
+window.onresize = () => {
+  if (window.innerWidth < 600) {
+    isEnabled = false;
+  } else {
+    isEnabled = true;
+  }
+};
+
 load();

@@ -348,14 +348,17 @@ ul.cards {
 
 .hidden {
   opacity: 0;
+  filter: none;
 }
 
 .cards.hidden {
   transform: translateY(250px);
+  filter: blur(5px);
 }
 
 .cards-item.hidden {
   transform: translateY(250px);
+  filter: blur(5px);
 }
 
 .lds-roller {

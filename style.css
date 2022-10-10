@@ -93,10 +93,12 @@ body:hover > #trailer {
 
 .hidden {
   opacity: 0;
+  filter: none;
 }
 
 #menu-list.hidden {
   transform: translateY(250px);
+  filter: blur(5px);
 }
 
 ul.statList {

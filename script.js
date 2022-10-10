@@ -21,13 +21,12 @@ async function modifyLoaderRoller(max) {
 
   roller.appendChild(modified);
   count = count + 1;
+  modifyLoaderRoller(max);
 }
 
-document.body.style.overflow = "hidden";
+modifyLoaderRoller(6);
 
-setInterval(function () {
-  modifyLoaderRoller(6);
-}, 200);
+document.body.style.overflow = "hidden";
 
 // Submit feedback
 async function submitFeedback() {

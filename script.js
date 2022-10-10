@@ -129,7 +129,6 @@ function hideLoader() {
 //Load external HTML
 async function loadPage(page) {
   loadStatus.innerHTML = "Loading...";
-  document.body.style.overflow = "hidden";
   var loader = document.getElementById("loader");
   loader.classList.remove("hidden");
   loader.style.zIndex = "1000";
@@ -137,7 +136,6 @@ async function loadPage(page) {
   var modalContent = document.createElement("div");
   var closeIcon = document.createElement("span");
   var html = await makeRequest("GET", full + "/" + page);
-  document.body.style.overflow = "hidden";
   modalDiv.id = page;
   modalDiv.className = "modal active";
   modalContent.className = "modal-content";
@@ -156,10 +154,10 @@ async function loadPage(page) {
   modalDiv.appendChild(modalContent);
   document.body.appendChild(modalDiv);
   loadStatus.innerHTML = "Getting in...";
-  document.body.style.overflow = "scroll";
   var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
+  document.body.style.overflow = "hidden";
 }
 
 // XHR functionality

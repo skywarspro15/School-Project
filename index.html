@@ -72,9 +72,7 @@
       </button>
     </div>
     <div class="welcomeScreen" id="welcomeScreen">
-      <p class="title" id="welcomeTitle">
-        Unparalleled creativity, unparalleled experiences.
-      </p>
+      <p class="title" id="welcomeTitle">Hello, visitor!</p>
       <p class="subtitle" id="welcomeSubtitle">Welcome to the site!</p>
     </div>
     <div class="vcenter">
@@ -117,22 +115,6 @@
           Watch teaser
         </button>
       </div>
-      <p
-        class="title"
-        style="margin-top: 30%; margin-bottom: 8vh; text-align: center"
-      >
-        Current Stats
-      </p>
-      <ul class="statList" id="stats" style="text-align: center">
-        <li>
-          <p class="title" id="onlineUsers">...</p>
-          <p class="subtitle">Online users</p>
-        </li>
-        <li>
-          <p class="title" id="totalUsers">...</p>
-          <p class="subtitle">Total users</p>
-        </li>
-      </ul>
       <p
         class="title"
         style="margin-top: 30%; margin-bottom: 8vh; text-align: center"
@@ -290,6 +272,14 @@
           href="https://github.com/skywarspro15/School-Project"
           >View source on GitHub</a
         >
+        <a
+          style="margin-left: 10px"
+          class="footer-item subtitle"
+          href="javascript:openModal('credits');"
+          >Credits & Inspiration</a
+        >
+        <p class="footer-item subtitle" id="onlineUsers"></p>
+        <p class="footer-item subtitle" id="totalUsers"></p>
       </footer>
     </div>
     <div id="aboutModal" class="modal">
@@ -332,6 +322,28 @@
         <span class="close">&times;</span>
         <p class="title">Announcement from the team</p>
         <p class="subtitle" id="announcementContent">Loading...</p>
+      </div>
+    </div>
+    <div id="credits" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p class="title">Credits & Inspiration</p>
+        <p class="subtitle">Things that made this site possible!</p>
+        <br />
+        <a class="subtitle" href="https://flaticon.com">Icons from Flaticon</a>
+        <br />
+        <a class="subtitle" href="https://repl.it"
+          >Backend servers from Replit</a
+        >
+        <br />
+        <a class="subtitle" href="https://netlify.app">
+          Front-end hosting from Netlify
+        </a>
+        <br />
+        <a class="subtitle" href="https://freenom.com"> Domain from Freenom </a>
+        <br />
+        <br />
+        <a class="subtitle" href="https://monopo.vn/">Site Inspiration</a>
       </div>
     </div>
   </body>

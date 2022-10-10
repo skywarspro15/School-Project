@@ -15,7 +15,7 @@ socket.on("USERCOUNT", (arg) => {
     document.getElementById("onlineUsers").style.animation =
       "countingUp 0.5s ease";
     setTimeout(function () {
-      document.getElementById("onlineUsers").innerHTML = arg;
+      document.getElementById("onlineUsers").innerHTML = arg + " users online";
     }, 200);
     setTimeout(function () {
       document.getElementById("onlineUsers").style.animation = "none";
@@ -24,7 +24,7 @@ socket.on("USERCOUNT", (arg) => {
     document.getElementById("onlineUsers").style.animation =
       "countingDown 0.5s ease";
     setTimeout(function () {
-      document.getElementById("onlineUsers").innerHTML = arg;
+      document.getElementById("onlineUsers").innerHTML = arg + " users online";
     }, 200);
     setTimeout(function () {
       document.getElementById("onlineUsers").style.animation = "none";

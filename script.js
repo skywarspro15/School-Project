@@ -68,7 +68,7 @@ async function getUserCount() {
   var totalCount = document.getElementById("totalUsers");
   totalCount.style.animation = "countingUp 0.5s ease";
   setTimeout(function () {
-    totalCount.innerHTML = result;
+    totalCount.innerHTML = result + " total users";
   }, 200);
   setTimeout(function () {
     totalCount.style.animation = "";
@@ -110,8 +110,21 @@ function hideLoader() {
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
   var loader = document.getElementById("loader");
+  var welcomeScreen = document.getElementById("welcomeScreen");
+  var welcomeTitle = document.getElementById("welcomeTitle");
+  var welcomeSubtitle = document.getElementById("welcomeSubtitle");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
+  welcomeScreen.style.opacity = "1";
+  welcomeTitle.style.animation = "enterUp 500ms";
+  welcomeSubtitle.style.animation = "enterUp 500ms";
+  welcomeSubtitle.style.animationDelay = "50ms";
+  setTimeout(function () {
+    welcomeScreen.style.opacity = "0";
+    welcomeScreen.style.zIndex = "-1000";
+    isEnabled = true;
+    enableTooltips();
+  }, 2000);
 }
 
 //Load external HTML

@@ -1,3 +1,9 @@
+body,
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
 body:hover > #trailer {
   opacity: 0;
 }
@@ -139,6 +145,41 @@ ul.statList li p.title {
   color: white;
 }
 
+.parallax {
+  /* The image used */
+  background-image: url("https://source.unsplash.com/1600x900/?mountains");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+#storyboardTitle {
+  margin-top: 30%;
+  margin-bottom: 8vh;
+  text-align: center;
+}
+
+@media screen and (max-width: 950px) {
+  .menu-list li.right a {
+    font-size: 6vh;
+  }
+  .menu-list li a {
+    font-size: 6vh;
+  }
+  #storyboardTitle {
+    margin-top: 50%;
+    margin-bottom: 8vh;
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .menu {
     display: inline-block;
@@ -155,16 +196,13 @@ ul.statList li p.title {
     text-align: left;
     font-size: 5vh;
   }
+  #storyboardTitle {
+    margin-top: 80%;
+    margin-bottom: 8vh;
+    text-align: center;
+  }
 }
 
-@media screen and (max-width: 950px) {
-  .menu-list li.right a {
-    font-size: 6vh;
-  }
-  .menu-list li a {
-    font-size: 6vh;
-  }
-}
 @keyframes countingUp {
   50% {
     transform: translateY(-30px);

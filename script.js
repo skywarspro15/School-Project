@@ -2,7 +2,6 @@
 document.onscroll = function () {
   appearElement("storyboard");
   appearElement("menu-list");
-  appearElement("stats");
 };
 
 // Remove JavaScript error notice and replace with loading screen

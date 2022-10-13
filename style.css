@@ -160,10 +160,9 @@ ul.statList li p.title {
   opacity: 0.5;
 }
 
-#storyboardTitle {
-  margin-top: 30%;
+#menu-list {
+  margin-top: 10%;
   margin-bottom: 8vh;
-  text-align: center;
 }
 
 @media screen and (max-width: 950px) {
@@ -173,10 +172,10 @@ ul.statList li p.title {
   .menu-list li a {
     font-size: 6vh;
   }
-  #storyboardTitle {
-    margin-top: 50%;
+  #menu-list {
+    margin-top: 20%;
     margin-bottom: 8vh;
-    text-align: center;
+    margin-right: 20%;
   }
 }
 
@@ -196,10 +195,10 @@ ul.statList li p.title {
     text-align: left;
     font-size: 5vh;
   }
-  #storyboardTitle {
-    margin-top: 80%;
+  #menu-list {
+    margin-top: 20%;
     margin-bottom: 8vh;
-    text-align: center;
+    margin-right: 20%;
   }
 }
 

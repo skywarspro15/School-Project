@@ -191,8 +191,8 @@ var origDate = new Date("October 14, 2022 12:00:00");
 var countDownDate = new Date(
   origDate.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
 ).getTime();
-
-var now = new Date().getTime();
+var origNow = new Date()
+var now = new Date(origNow.toLocaleString("en-US", {timeZone: "Asia/Taipei"})).getTime();
 
 var distance = countDownDate - now;
 

@@ -187,7 +187,10 @@ function getCookie(cname) {
 }
 
 // Countdown timer
-var countDownDate = new Date("October 14, 2022 12:00:00").getTime();
+var origDate = new Date("October 14, 2022 12:00:00");
+var countDownDate = new Date(
+  origDate.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
+).getTime();
 
 var now = new Date().getTime();
 

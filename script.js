@@ -78,9 +78,6 @@ async function getUserCount() {
 async function load() {
   if (getCookie("visited") != "true") {
     await addUserCount();
-    setTimeout(function () {
-      openModal("welcomeModal");
-    }, 2100);
   }
   await getUserCount();
   loadStatus.innerHTML = "Getting in...";

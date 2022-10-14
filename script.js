@@ -191,8 +191,10 @@ var origDate = new Date("October 14, 2022 12:00:00");
 var countDownDate = new Date(
   origDate.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
 ).getTime();
-var origNow = new Date()
-var now = new Date(origNow.toLocaleString("en-US", {timeZone: "Asia/Taipei"})).getTime();
+var origNow = new Date();
+var now = new Date(
+  origNow.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
+).getTime();
 
 var distance = countDownDate - now;
 
@@ -214,11 +216,14 @@ document.getElementById("releasingIN").innerHTML =
 
 if (distance < 0) {
   clearInterval(x);
-  document.getElementById("releasingIN").innerHTML = "Released";
+  document.getElementById("releasingIN").innerHTML = "Premiering now.";
 }
 
 var x = setInterval(function () {
-  var now = new Date().getTime();
+  var origNow = new Date();
+  var now = new Date(
+    origNow.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
+  ).getTime();
 
   var distance = countDownDate - now;
 
@@ -240,7 +245,7 @@ var x = setInterval(function () {
 
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("releasingIN").innerHTML = "Released";
+    document.getElementById("releasingIN").innerHTML = "Premiering now.";
   }
 }, 1000);
 

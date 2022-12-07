@@ -1,8 +1,24 @@
 //Scrolling animation
-document.onscroll = function () {
-  appearElement("storyboard");
-  appearElement("menu-list");
-};
+var scrollThrot;
+document.addEventListener(
+  "scroll",
+  function () {
+    if (!scrollThrot) {
+      console.log("Scrolling...");
+      appearElement("menu-list");
+      appearElement("problem");
+      document.body.style.setProperty(
+        "--scroll",
+        window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+      );
+      scrollThrot = true;
+      setTimeout(function () {
+        scrollThrot = false;
+      }, 16.6);
+    }
+  },
+  { passive: true }
+);
 
 // Remove JavaScript error notice and replace with loading screen
 var count = 0;
@@ -14,7 +30,7 @@ var isEnabled = false;
 errorIcon[0].remove();
 
 async function modifyLoaderRoller(max) {
-  if (count >= max) return;
+  if (count > max) return;
   var roller = document.getElementById("roller");
   var modified = document.createElement("div");
 
@@ -23,7 +39,10 @@ async function modifyLoaderRoller(max) {
   modifyLoaderRoller(max);
 }
 
-modifyLoaderRoller(6);
+async function removeLoaderRoller() {
+  var roller = document.getElementById("roller");
+  roller.innerHTML = "";
+}
 
 document.body.style.overflow = "hidden";
 
@@ -76,27 +95,25 @@ async function getUserCount() {
 
 // Load site
 async function load() {
+  hideLoader();
+  registerButtons();
   if (getCookie("visited") != "true") {
     await addUserCount();
   }
   await getUserCount();
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
-  var loader = document.getElementById("loader");
-  loader.classList.add("hidden");
-  loader.style.zIndex = "-100";
-  enableTooltips();
 }
 
 // Hide the loading indicator when there's connectivity issues
 function hideLoader() {
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
-  var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
-  enableTooltips();
 }
+
+hideLoader();
 
 //Load external HTML
 async function loadPage(page) {
@@ -104,6 +121,7 @@ async function loadPage(page) {
   var loader = document.getElementById("loader");
   loader.classList.remove("hidden");
   loader.style.zIndex = "1000";
+  modifyLoaderRoller(6);
   var modalDiv = document.createElement("div");
   var modalContent = document.createElement("div");
   var closeIcon = document.createElement("span");
@@ -130,6 +148,8 @@ async function loadPage(page) {
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
   document.body.style.overflow = "hidden";
+  removeLoaderRoller();
+  registerButtons();
 }
 
 // XHR functionality
@@ -181,136 +201,6 @@ function getCookie(cname) {
     }
   }
   return "";
-}
-
-// Countdown timer
-var origDate = new Date("October 14, 2022 12:00:00");
-var countDownDate = new Date(
-  origDate.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
-).getTime();
-var origNow = new Date();
-var now = new Date(
-  origNow.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
-).getTime();
-
-var distance = countDownDate - now;
-
-var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-document.getElementById("releasingIN").innerHTML =
-  "Something new is releasing in " +
-  days +
-  "d " +
-  hours +
-  "h " +
-  minutes +
-  "m " +
-  seconds +
-  "s...";
-
-if (distance < 0) {
-  clearInterval(x);
-  document.getElementById("releasingIN").innerHTML = "Premiering now.";
-}
-
-var x = setInterval(function () {
-  var origNow = new Date();
-  var now = new Date(
-    origNow.toLocaleString("en-US", { timeZone: "Asia/Taipei" })
-  ).getTime();
-
-  var distance = countDownDate - now;
-
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  document.getElementById("releasingIN").innerHTML =
-    "Something new is releasing in " +
-    days +
-    "d " +
-    hours +
-    "h " +
-    minutes +
-    "m " +
-    seconds +
-    "s...";
-
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("releasingIN").innerHTML = "Premiering now.";
-  }
-}, 1000);
-
-// Custom cursor
-const trailer = document.getElementById("trailer");
-
-const animateTrailer = (e, interacting) => {
-  const x = e.clientX - trailer.offsetWidth / 2,
-    y = e.clientY - trailer.offsetHeight / 2;
-
-  const keyframes = {
-    transform: `translate(${x}px, ${y}px) scale(${interacting ? 2 : 1})`,
-  };
-
-  trailer.animate(keyframes, {
-    duration: 800,
-    fill: "forwards",
-  });
-};
-
-function enableTooltips() {
-  if (window.innerWidth < 600) {
-    isEnabled = false;
-  } else {
-    isEnabled = true;
-  }
-  window.onmousemove = (e) => {
-    if (isEnabled == true) {
-      const interactable = e.target.closest(".interactable"),
-        interacting = interactable !== null;
-
-      const text = document.getElementById("trailer-text");
-
-      animateTrailer(e, interacting);
-
-      trailer.dataset.type = interacting ? interactable.dataset.type : "";
-
-      if (interacting) {
-        trailer.style.opacity = "1";
-        trailer.style.borderRadius = "5px";
-        trailer.style.width = "auto";
-        trailer.style.padding = "5px";
-        trailer.style.marginLeft = "10%";
-        text.style.fontSize = "5%";
-        text.innerText = interactable.dataset.type;
-      } else {
-        trailer.style.transition = "all 800ms";
-        trailer.style.opacity = "0";
-        trailer.style.borderRadius = "10px";
-        trailer.style.padding = "2px";
-        trailer.style.width = "none";
-        trailer.style.marginLeft = "0";
-        text.style.fontSize = "5%";
-        text.innerText = "";
-        setTimeout(function () {
-          trailer.style.transition = "none";
-        }, 800);
-      }
-    }
-  };
-
-  window.onresize = () => {
-    if (window.innerWidth < 600) {
-      isEnabled = false;
-    } else {
-      isEnabled = true;
-    }
-  };
 }
 
 load();

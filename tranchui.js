@@ -3,18 +3,20 @@ function openModal(id) {
   var modalContent = modal.getElementsByClassName("modal-content");
   var closeButton = modal.getElementsByClassName("close");
   modal.classList.add("active");
-  modal.style.animation = "fadeIn 500ms";
+  modal.style.animation = "fadeIn cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
   document.body.style.overflow = "hidden";
 
   closeButton[0].addEventListener(
     "click",
     (e) => {
-      modalContent[0].style.animation = "slideUp 500ms";
-      modal.style.animation = "fadeOut 500ms";
+      modalContent[0].style.animation =
+        "slideUp cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
+      modal.style.animation = "fadeOut cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
       setTimeout(function () {
         modal.classList.remove("active");
         modal.style.animation = "none";
-        modalContent[0].style.animation = "slideDown 500ms";
+        modalContent[0].style.animation =
+          "slideDown cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
       }, 500);
       document.body.style.overflow = "scroll";
     },
@@ -25,12 +27,14 @@ function openModal(id) {
 function closeModal(id) {
   var modal = document.getElementById(id);
   var modalContent = modal.getElementsByClassName("modal-content");
-  modalContent[0].style.animation = "slideUp 500ms";
-  modal.style.animation = "fadeOut 500ms";
+  modalContent[0].style.animation =
+    "slideUp cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
+  modal.style.animation = "fadeOut cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
   setTimeout(function () {
     modal.classList.remove("active");
     modal.style.animation = "none";
-    modalContent[0].style.animation = "slideDown 500ms";
+    modalContent[0].style.animation =
+      "slideDown cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
   }, 500);
   document.body.style.overflow = "scroll";
 }
@@ -74,4 +78,56 @@ function navItemHide(id) {
     elements[i].classList.remove("responsive-active");
     elements[i].classList.add("responsive");
   }
+}
+
+function registerButtons() {
+  let mouseDown = false;
+  document.querySelectorAll(".button").forEach((button) => {
+    button.onmouseleave = (e) => {
+      mouseDown = false;
+      e.target.style.background = "rgba(37, 37, 37, 0.8)";
+      e.target.style.border = "1px solid rgb(100, 100, 100)";
+    };
+
+    button.addEventListener("mousemove", (e) => {
+      const rect = e.target.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      if (!mouseDown) {
+        e.target.style.background = `radial-gradient(circle at ${x}px ${y}px , rgba(255,255,255,0.2),rgba(37,37,37,0.8) )`;
+        e.target.style.borderImage = `radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch `;
+      } else {
+        e.target.style.background = `radial-gradient(circle at ${x}px ${y}px , rgba(255,255,255,0.5),rgba(37,37,37,0.8) )`;
+        e.target.style.borderImage = `radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch `;
+      }
+    });
+
+    button.addEventListener("mousedown", (e) => {
+      mouseDown = true;
+      const rect = e.target.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      e.target.style.background = `radial-gradient(circle at ${x}px ${y}px , rgba(255,255,255,0.5),rgba(37,37,37,0.8) )`;
+      e.target.style.borderImage = `radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch `;
+    });
+
+    button.addEventListener("mouseup", (e) => {
+      mouseDown = false;
+      const rect = e.target.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      e.target.style.background = `radial-gradient(circle at ${x}px ${y}px , rgba(255,255,255,0.2),rgba(37,37,37,0.8) )`;
+      e.target.style.borderImage = `radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch `;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+      const rect = button.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      button.style.borderImage = `radial-gradient(20% 75% at ${x}px ${y}px ,rgba(255,255,255,0.7),rgba(255,255,255,0.1) ) 1 / 1px / 0px stretch`;
+    });
+  });
 }

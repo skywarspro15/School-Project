@@ -13,7 +13,7 @@ socket.on("USERCOUNT", (arg) => {
   var count = parseInt(arg);
   if (count > lastCount) {
     document.getElementById("onlineUsers").style.animation =
-      "countingUp 0.5s ease";
+      "countingUp 0.5s cubic-bezier(0.65, 0.05, 0.36, 1)";
     setTimeout(function () {
       document.getElementById("onlineUsers").innerHTML = arg + " users online";
     }, 200);
@@ -22,7 +22,7 @@ socket.on("USERCOUNT", (arg) => {
     }, 500);
   } else if (count < lastCount) {
     document.getElementById("onlineUsers").style.animation =
-      "countingDown 0.5s ease";
+      "countingDown 0.5s cubic-bezier(0.65, 0.05, 0.36, 1)";
     setTimeout(function () {
       document.getElementById("onlineUsers").innerHTML = arg + " users online";
     }, 200);

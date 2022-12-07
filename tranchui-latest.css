@@ -28,7 +28,6 @@ body {
   color-scheme: dark;
   font-family: SegoeUIVariable;
   scroll-behavior: smooth;
-  height: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -55,7 +54,7 @@ body {
   z-index: 10000;
   background: rgba(25, 25, 25, 0.5);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(20px);
   animation: slideDown 500ms;
 }
 
@@ -92,28 +91,55 @@ ul.navbar li.nav-item.right {
 a {
   text-decoration: none;
   color: white;
-  font-size: 15px;
+}
+
+a.underline {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
   vertical-align: middle;
   line-height: normal;
-  transition: all 500ms;
+}
+
+a.underline::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.45s cubic-bezier(0.08, 0.82, 0.17, 1);
+}
+
+a.underline:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
 
 .button {
-  background-color: rgb(255, 255, 255);
-  color: black;
+  background-color: rgba(37, 37, 37, 0.8);
+  color: white;
   border-radius: 5px;
   padding: 10px;
   padding-right: 15px;
   padding-left: 15px;
   font-size: 15px;
-  border: none;
+  border: 1px solid rgb(100, 100, 100);
   font-family: SegoeUIVariableSemibold;
   cursor: pointer;
-  transition: all 100ms;
+  transition: all 200ms;
+  backdrop-filter: blur(50px);
 }
 
-button.button:hover {
-  background-color: #eee;
+button.button:active {
+  background-color: rgba(37, 37, 37, 0.8);
+  transform: scale(0.95);
+  box-shadow: none;
 }
 
 .bold {
@@ -161,20 +187,20 @@ button.button:hover {
   overflow: auto;
   background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
-  animation: fadeIn 500ms;
+  animation: fadeIn cubic-bezier(0.08, 0.82, 0.17, 1) 500ms;
 }
 
 /* Modal Content/Box */
 .modal-content {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(14, 14, 14, 0.8);
   animation: slideDown 500ms;
   margin: 10% auto;
   padding: 20px;
-  border-radius: 5px;
-  border: 1px rgb(25, 25, 25) solid;
+  border-radius: 10px;
+  border: 1px rgba(100, 100, 100, 0.8) solid;
   width: 80%;
-  transition: all 0.5s;
+  backdrop-filter: blur(20px);
+  transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.5s;
 }
 
 /* The Close Button */
@@ -196,9 +222,10 @@ button.button:hover {
 }
 
 input {
-  background-color: white;
-  color: black;
+  background-color: rgba(37, 37, 37, 0.8);
+  color: white;
   border-radius: 5px;
+  border: 1px solid rgba(100, 100, 100, 0.8);
   padding: 5px;
   font-family: SegoeUIVariable;
 }
@@ -267,7 +294,7 @@ img {
   list-style: none;
   margin: 0;
   padding: 0;
-  transition: all 500ms;
+  transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 500ms;
 }
 
 .cards-item {
@@ -297,19 +324,23 @@ ul.cards {
 }
 
 .card {
+  border: 1px solid rgba(100, 100, 100, 0.8);
   background-color: black;
-  border-radius: 8px;
+  border-radius: 5px;
   box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  transition: all 500ms;
-  transition-delay: 200ms;
+  transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 300ms;
 }
 
 .card:hover {
   transform: scale(1.05);
   cursor: pointer;
+}
+
+.card:active {
+  transform: scale(0.95);
 }
 
 .card-content {
@@ -318,13 +349,14 @@ ul.cards {
   transition: all 500ms;
 }
 
+.card-content:hover {
+  background-color: rgba(50, 50, 50, 0.8);
+}
+
 .card-title {
   color: #ffffff;
   font-size: 1.1rem;
-  font-weight: 700;
-  letter-spacing: 1px;
   font-family: SegoeUIVariableSemibold;
-  text-transform: capitalize;
   margin: 0px;
   transition: all 500ms;
 }
@@ -353,12 +385,10 @@ ul.cards {
 
 .cards.hidden {
   transform: translateY(250px);
-  filter: blur(5px);
 }
 
 .cards-item.hidden {
   transform: translateY(250px);
-  filter: blur(5px);
 }
 
 .lds-roller {

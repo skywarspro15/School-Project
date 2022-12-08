@@ -21,7 +21,6 @@ function openModal(id) {
       }, 500);
       scrollTopButton.style.transform = "translateY(0)";
       document.body.style.overflow = "scroll";
-      document.body.style.overflowX = "hidden";
     },
     { once: true }
   );
@@ -40,7 +39,6 @@ function closeModal(id) {
       "slideUp cubic-bezier(0.68,-0.55,0.27,1.55) 500ms";
   }, 500);
   document.body.style.overflow = "scroll";
-  document.body.style.overflowX = "hidden";
   scrollTopButton.style.transform = "translateY(0)";
 }
 

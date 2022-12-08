@@ -265,15 +265,15 @@ input {
 }
 @media only screen and (max-width: 600px) {
   .modal-content {
-    position: fixed;
+    position: absolute;
     background: rgba(0, 0, 0, 0.85);
     animation: slideDown 500ms;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px rgb(25, 25, 25) solid;
-    width: 92%;
+    width: 91.5%;
     height: 420vh;
-    overflow: scroll;
+    overflow-x: hidden;
     z-index: 40000000000000000000;
   }
   .close {

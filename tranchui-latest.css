@@ -202,6 +202,7 @@ button.button:active {
   backdrop-filter: blur(20px);
   transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.5s;
   z-index: 1000000000000001;
+  overflow: scroll;
 }
 
 .modal-content.img {

@@ -147,6 +147,7 @@ async function loadPage(page) {
     closeModal(modalDiv.id);
     setTimeout(function () {
       modalDiv.remove();
+      document.body.style.overflow = "scroll";
       scrollTopButton.style.transform = "translateY(0)";
     }, 500);
   });
@@ -159,7 +160,7 @@ async function loadPage(page) {
   var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
-  // document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
   scrollTopButton.style.transform = "translateY(100px)";
   removeLoaderRoller();
   registerButtons();
@@ -187,6 +188,7 @@ async function loadPageWithImage(page, image) {
     closeModal(modalDiv.id);
     setTimeout(function () {
       modalDiv.remove();
+      document.body.style.overflow = "scroll";
       scrollTopButton.style.transform = "translateY(0)";
     }, 500);
   });
@@ -203,7 +205,7 @@ async function loadPageWithImage(page, image) {
   var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
-  // document.body.style.overflow = "hidden";
+  document.body.style.overflow = "hidden";
   scrollTopButton.style.transform = "translateY(100px)";
   removeLoaderRoller();
   registerButtons();

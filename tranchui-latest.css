@@ -264,10 +264,6 @@ input {
   display: none;
 }
 @media only screen and (max-width: 600px) {
-  .modal {
-    height: 420vh;
-  }
-
   .modal-content {
     position: fixed;
     background: rgba(0, 0, 0, 0.85);
@@ -278,6 +274,7 @@ input {
     width: 92%;
     height: 420vh;
     overflow: scroll;
+    z-index: 400000000000000000;
   }
   .close {
     color: #aaa;

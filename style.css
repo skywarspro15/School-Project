@@ -241,6 +241,13 @@ ul.statList li p.title {
     margin-bottom: 8vh;
     margin-right: 20%;
   }
+  .button.scroll-top {
+    position: fixed;
+    top: 90%;
+    left: 80%;
+    text-align: center;
+    z-index: 40000000000;
+  }
 }
 
 @keyframes enterUp {

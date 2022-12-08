@@ -165,6 +165,50 @@ async function loadPage(page) {
   registerButtons();
 }
 
+async function loadPageWithImage(page, image) {
+  loadStatus.innerHTML = "Loading...";
+  var loader = document.getElementById("loader");
+  loader.classList.remove("hidden");
+  loader.style.zIndex = "1000";
+  modifyLoaderRoller(6);
+  var modalDiv = document.createElement("div");
+  var modalContent = document.createElement("div");
+  var closeIcon = document.createElement("span");
+  var modalImage = document.createElement("img");
+  var html = await makeRequest("GET", full + "/" + page);
+  modalDiv.id = page;
+  modalDiv.className = "modal active";
+  modalContent.className = "modal-content img";
+
+  closeIcon.className = "close img";
+  closeIcon.innerHTML = "&times;";
+  closeIcon.style.margin = "10px";
+  closeIcon.addEventListener("click", function () {
+    closeModal(modalDiv.id);
+    setTimeout(function () {
+      modalDiv.remove();
+      scrollTopButton.style.transform = "translateY(0)";
+    }, 500);
+  });
+
+  modalImage.className = "modal-image";
+  modalImage.src = image;
+
+  modalContent.appendChild(closeIcon);
+  modalContent.appendChild(modalImage);
+  modalContent.insertAdjacentHTML("beforeend", "<br><br>" + html);
+  modalDiv.appendChild(modalContent);
+  document.body.appendChild(modalDiv);
+  loadStatus.innerHTML = "Getting in...";
+  var loader = document.getElementById("loader");
+  loader.classList.add("hidden");
+  loader.style.zIndex = "-100";
+  document.body.style.overflow = "hidden";
+  scrollTopButton.style.transform = "translateY(100px)";
+  removeLoaderRoller();
+  registerButtons();
+}
+
 // Scroll to top
 function scrollToTop() {
   window.scrollTo(0, 0);

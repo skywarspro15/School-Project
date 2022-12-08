@@ -204,13 +204,41 @@ button.button:active {
   transition: all cubic-bezier(0.65, 0.05, 0.36, 1) 0.5s;
 }
 
+.modal-content.img {
+  padding-top: 20px;
+}
+
+.modal-content img.modal-image {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 10%;
+  max-height: 20%;
+  max-width: 100%;
+  margin-top: -8%;
+  z-index: -100;
+  border-radius: 8px;
+}
+
 /* The Close Button */
 .close {
-  color: #aaa;
+  color: #fff;
   float: right;
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
+  z-index: 4000000000000;
+}
+
+.close.img {
+  color: #fff;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 40000000000000;
+  margin-right: 30px;
+  margin-top: 10px;
 }
 
 .modal.active {

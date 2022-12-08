@@ -28,7 +28,6 @@ body {
   color-scheme: dark;
   font-family: SegoeUIVariable;
   scroll-behavior: smooth;
-  overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {

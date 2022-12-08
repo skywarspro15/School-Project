@@ -3,6 +3,7 @@ var scrollThrot;
 var lastScrollTop = 0;
 var scrollTopButton = document.getElementById("scrollTopButton");
 scrollTopButton.style.transform = "translateY(100px)";
+document.body.style.overflowX = "hidden";
 document.addEventListener(
   "scroll",
   function () {

@@ -272,6 +272,7 @@ input {
     border: 1px rgb(25, 25, 25) solid;
     width: 92%;
     height: 420vh;
+    overflow: scroll;
   }
   .close {
     color: #aaa;

@@ -162,6 +162,7 @@ ul.statList li p.title {
 
   animation-iteration-count: 1;
   animation-fill-mode: both;
+  z-index: 100000000000;
 }
 
 .scroll-fade-out {
@@ -194,6 +195,14 @@ ul.statList li p.title {
 
   animation-iteration-count: 1;
   animation-fill-mode: both;
+}
+
+.button.scroll-top {
+  position: fixed;
+  top: 90%;
+  left: 95%;
+  text-align: center;
+  z-index: 40000000000;
 }
 
 @media screen and (max-width: 950px) {

@@ -5,20 +5,23 @@ function openModal(id) {
   modal.classList.add("active");
   modal.style.animation = "fadeIn cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
   document.body.style.overflow = "hidden";
+  scrollTopButton.style.transform = "translateY(100px)";
 
   closeButton[0].addEventListener(
     "click",
     (e) => {
       modalContent[0].style.animation =
-        "slideUp cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
+        "scaleDown cubic-bezier(0.68,-0.55,0.27,1.55) 500ms";
       modal.style.animation = "fadeOut cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
       setTimeout(function () {
         modal.classList.remove("active");
         modal.style.animation = "none";
         modalContent[0].style.animation =
-          "slideDown cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
+          "scaleUp cubic-bezier(0.68,-0.55,0.27,1.55) 500ms";
       }, 500);
+      scrollTopButton.style.transform = "translateY(0)";
       document.body.style.overflow = "scroll";
+      document.body.style.overflowX = "hidden";
     },
     { once: true }
   );
@@ -28,15 +31,17 @@ function closeModal(id) {
   var modal = document.getElementById(id);
   var modalContent = modal.getElementsByClassName("modal-content");
   modalContent[0].style.animation =
-    "slideUp cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
-  modal.style.animation = "fadeOut cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
+    "scaleDown cubic-bezier(0.68,-0.55,0.27,1.55) 500ms";
+  modal.style.animation = "fadeOut cubic-bezier(0.68,-0.55,0.27,1.55) 500ms";
   setTimeout(function () {
     modal.classList.remove("active");
     modal.style.animation = "none";
     modalContent[0].style.animation =
-      "slideDown cubic-bezier(0.65, 0.05, 0.36, 1) 500ms";
+      "slideUp cubic-bezier(0.68,-0.55,0.27,1.55) 500ms";
   }, 500);
   document.body.style.overflow = "scroll";
+  document.body.style.overflowX = "hidden";
+  scrollTopButton.style.transform = "translateY(0)";
 }
 
 const elementIsVisibleInViewport = (el, partiallyVisible = false) => {

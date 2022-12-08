@@ -1,20 +1,31 @@
 //Scrolling animation
 var scrollThrot;
+var lastScrollTop = 0;
+var scrollTopButton = document.getElementById("scrollTopButton");
+scrollTopButton.style.transform = "translateY(100px)";
 document.addEventListener(
   "scroll",
   function () {
     if (!scrollThrot) {
-      console.log("Scrolling...");
       appearElement("menu-list");
       appearElement("problem");
       document.body.style.setProperty(
         "--scroll",
         window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
       );
+      var st = window.pageYOffset || document.documentElement.scrollTop;
+      if (st > lastScrollTop) {
+        scrollTopButton.style.transform = "translateY(0)";
+      } else {
+        scrollTopButton.style.transform = "translateY(100px)";
+      }
+      lastScrollTop = st <= 0 ? 0 : st;
       scrollThrot = true;
       setTimeout(function () {
         scrollThrot = false;
       }, 16.6);
+    } else {
+      console.warn("User scrolled too fast!");
     }
   },
   { passive: true }
@@ -136,6 +147,7 @@ async function loadPage(page) {
     closeModal(modalDiv.id);
     setTimeout(function () {
       modalDiv.remove();
+      scrollTopButton.style.transform = "translateY(0)";
     }, 500);
   });
 
@@ -148,8 +160,14 @@ async function loadPage(page) {
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
   document.body.style.overflow = "hidden";
+  scrollTopButton.style.transform = "translateY(100px)";
   removeLoaderRoller();
   registerButtons();
+}
+
+// Scroll to top
+function scrollToTop() {
+  window.scrollTo(0, 0);
 }
 
 // XHR functionality

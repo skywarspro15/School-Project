@@ -266,7 +266,7 @@ input {
 @media only screen and (max-width: 600px) {
   .modal-content {
     background: rgba(0, 0, 0, 0.85);
-    animation: slideDown 500ms;
+    animation: slideDown cubic-bezier(0.68, -0.55, 0.27, 1.55) 500ms;
     margin: 0 auto;
     border-radius: 5px;
     border: 1px rgb(25, 25, 25) solid;

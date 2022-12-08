@@ -3,7 +3,6 @@ var scrollThrot;
 var lastScrollTop = 0;
 var scrollTopButton = document.getElementById("scrollTopButton");
 scrollTopButton.style.transform = "translateY(100px)";
-document.body.style.overflowX = "hidden";
 document.addEventListener(
   "scroll",
   function () {
@@ -160,7 +159,7 @@ async function loadPage(page) {
   var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
-  document.body.style.overflow = "hidden";
+  // document.body.style.overflow = "hidden";
   scrollTopButton.style.transform = "translateY(100px)";
   removeLoaderRoller();
   registerButtons();
@@ -204,7 +203,7 @@ async function loadPageWithImage(page, image) {
   var loader = document.getElementById("loader");
   loader.classList.add("hidden");
   loader.style.zIndex = "-100";
-  document.body.style.overflow = "hidden";
+  // document.body.style.overflow = "hidden";
   scrollTopButton.style.transform = "translateY(100px)";
   removeLoaderRoller();
   registerButtons();

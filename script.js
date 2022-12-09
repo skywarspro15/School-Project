@@ -9,6 +9,7 @@ document.addEventListener(
     if (!scrollThrot) {
       appearElement("menu-list");
       appearElement("problem");
+      appearElement("solution");
       document.body.style.setProperty(
         "--scroll",
         window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
@@ -108,6 +109,7 @@ async function getUserCount() {
 async function load() {
   hideLoader();
   registerButtons();
+  urlOpenPage();
   if (getCookie("visited") != "true") {
     await addUserCount();
   }
@@ -209,6 +211,24 @@ async function loadPageWithImage(page, image) {
   scrollTopButton.style.transform = "translateY(100px)";
   removeLoaderRoller();
   registerButtons();
+}
+
+//Open page based on URL
+function urlOpenPage() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const hasImage = urlParams.has("i");
+  const hasModal = urlParams.has("p");
+
+  if (hasImage && hasModal) {
+    loadPageWithImage(urlParams.get("p"), urlParams.get("i"));
+    window.history.pushState("", "", "/index.html");
+    return;
+  }
+
+  if (hasModal) {
+    loadPage(urlParams.get("p"));
+  }
 }
 
 // Scroll to top

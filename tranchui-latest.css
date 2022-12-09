@@ -274,6 +274,7 @@ input {
     height: 300%;
     overflow-x: hidden;
     z-index: 40000000000000000000;
+    backdrop-filter: blur(0px);
   }
   .close {
     color: #aaa;

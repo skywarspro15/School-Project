@@ -1,3 +1,5 @@
+var effectEnabled = false;
+
 function openModal(id) {
   var modal = document.getElementById(id);
   var modalContent = modal.getElementsByClassName("modal-content");
@@ -99,6 +101,7 @@ function navItemHide(id) {
 }
 
 function registerButtons() {
+  if (effectEnabled == false) return;
   let mouseDown = false;
   document.querySelectorAll(".button").forEach((button) => {
     button.onmouseleave = (e) => {
@@ -149,3 +152,5 @@ function registerButtons() {
     });
   });
 }
+
+if (window.innerWidth > 600) effectEnabled = true;

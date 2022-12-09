@@ -107,13 +107,17 @@ async function getUserCount() {
 
 // Load site
 async function load() {
+  if (getCookie("visited") != "true") {
+    let curVersion = await makeRequest("GET", "/VERSION");
+    setCookie("version", curVersion);
+    await addUserCount();
+  } else {
+    await checkVersion();
+  }
+  await getUserCount();
   hideLoader();
   registerButtons();
   urlOpenPage();
-  if (getCookie("visited") != "true") {
-    await addUserCount();
-  }
-  await getUserCount();
   loadStatus.innerHTML = "Getting in...";
   document.body.style.overflow = "scroll";
 }
@@ -235,6 +239,15 @@ function urlOpenPage() {
 // Scroll to top
 function scrollToTop() {
   window.scrollTo(0, 0);
+}
+
+//Check for updates
+async function checkVersion() {
+  let curVersion = await makeRequest("GET", "/VERSION");
+  if (curVersion != getCookie("version")) {
+    setCookie("version", curVersion);
+    loadPageWithImage("siteUpdated.html", "images/updated.png");
+  }
 }
 
 // XHR functionality

@@ -1,0 +1,248 @@
+body,
+html {
+  height: 100%;
+  min-height: 100%;
+}
+
+body:hover > #trailer {
+  opacity: 0;
+}
+
+#trailer {
+  padding: 20px;
+  background: rgba(18, 18, 18, 0.7);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  z-index: 6942069;
+
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 500ms ease;
+
+  display: grid;
+  place-items: center;
+  vertical-align: top;
+}
+
+#trailer-text {
+  color: white;
+  text-align: left;
+  vertical-align: top;
+  white-space: nowrap;
+}
+
+.menu {
+  transition: all 500ms;
+  display: flex;
+  flex-direction: row;
+  gap: 30vw;
+}
+
+.menu-list {
+  transition: all 500ms;
+  transition-delay: 200ms;
+  list-style-type: none;
+  font-size: 250%;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.menu-list li a {
+  font-size: 8vh;
+  color: gray;
+  transition: all 200ms;
+  text-align: left;
+}
+
+.menu-list {
+  transition: all 500ms;
+  transition-delay: 200ms;
+  list-style-type: none;
+  font-size: 25vh;
+}
+
+.menu-list li.right a {
+  transition: all 500ms;
+  font-size: 50;
+  color: gray;
+  transition: all 200ms;
+  text-align: right;
+  margin-right: 8vh;
+  font-size: 8vh;
+}
+
+.menu-list li a:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.menu-list li a:active {
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
+    0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+}
+
+.menu-list li.right a:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.menu-list li.right a:active {
+  color: white;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff,
+    0 0 50px #fff, 0 0 60px #fff, 0 0 70px #fff;
+}
+
+.hidden {
+  opacity: 0;
+  filter: none;
+}
+
+#menu-list.hidden {
+  transform: translateY(250px);
+  filter: blur(5px);
+}
+
+ul.statList {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 30vw;
+  margin: 0;
+  padding: 0;
+}
+
+ul.statList li {
+  text-align: center;
+}
+
+ul.statList li p.title {
+  font-size: 5em;
+}
+
+#title {
+  color: #43cea2; /* fallback for old browsers */
+  color: -webkit-linear-gradient(
+    to right,
+    #185a9d,
+    #43cea2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  color: linear-gradient(
+    to right,
+    #185a9d,
+    #43cea2
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  transition: all 500ms;
+}
+
+#title:hover {
+  color: white;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("https://source.unsplash.com/1600x900/?ancient%20china%20villages");
+
+  /* Full height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.5;
+}
+
+#menu-list {
+  margin-top: 10%;
+  margin-bottom: 8vh;
+}
+
+@media screen and (max-width: 950px) {
+  .menu-list li.right a {
+    font-size: 6vh;
+  }
+  .menu-list li a {
+    font-size: 6vh;
+  }
+  #menu-list {
+    margin-top: 20%;
+    margin-bottom: 8vh;
+    margin-right: 20%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .menu {
+    display: inline-block;
+  }
+  .menu-list li.right a {
+    color: gray;
+    transition: all 200ms;
+    text-align: left;
+    font-size: 5vh;
+  }
+  .menu-list li a {
+    color: gray;
+    transition: all 200ms;
+    text-align: left;
+    font-size: 5vh;
+  }
+  #menu-list {
+    margin-top: 20%;
+    margin-bottom: 8vh;
+    margin-right: 20%;
+  }
+}
+
+@keyframes countingUp {
+  50% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes countingDown {
+  50% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes countingDown {
+  50% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  75% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

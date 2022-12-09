@@ -228,6 +228,7 @@ function urlOpenPage() {
 
   if (hasModal) {
     loadPage(urlParams.get("p"));
+    window.history.pushState("", "", "/index.html");
   }
 }
 
